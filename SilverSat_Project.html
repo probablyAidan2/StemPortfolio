@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SilverSat - Aidan Carle</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-detail {
+            padding: 6rem 0 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .project-header {
+            margin-bottom: 3rem;
+        }
+        .project-header h1 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        .project-image-large {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .project-section {
+            margin-bottom: 3rem;
+        }
+        .project-section h2 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .project-section p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .project-section ul {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-left: 2rem;
+        }
+        .back-button {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-button:hover {
+            text-decoration: underline;
+        }
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation (same as index.html) -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Aidan Carle</div>
+            <div class="nav-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Detail Content -->
+    <div class="project-detail container">
+        <a href="index.html#projects" class="back-button">← Back to Projects</a>
+        
+        <div class="project-header">
+            <h1>SilverSat - CubeSat Mission</h1>
+            <div class="project-meta">
+                <span>📅 2021-Present</span>
+                <span>⏱️ 4+ months</span>
+                <span>👥 Group Project</span>
+            </div>
+            <div class="project-tags">
+                <span class="tag">Creo</span>
+                <span class="tag">KiCad</span>
+                <span class="tag">Leadership</span>
+                <span class="tag">Presentation</span>
+            </div>
+        </div>
+
+        <img src="images/SilverSat_Image1.jpg" alt="Project Screenshot" class="project-image-large">
+
+        <div class="project-section">
+            <h2>Overview</h2>
+            <p>SilverSat was selected for NASA's 12th round of selections for the CubeSat Launch Initiative. The primary goal of the mission was to provide educational value to middle and high school students through hands-on learning and a real-world work environment. Students work under professional engineers from the Johns Hopkins Applied Physics Laboratory and NASA Goddard to design, build, and operate the CubeSat. SilverSat launched aboard a SpaceX Falcon 9 Rocket on Northrup Grumman's NG-23 ISS resupply mission on September 14, 2025. The satellite is now resting on the ISS until its deployment near the end of November 2025. </p>
+        </div>
+      
+      <div class="project-section">
+            <h2>Mission Description</h2>
+            <p>The purpose of our satellite is to take pictures of requested locations and upload them to social media in an automated process. </p>
+        </div>
+
+        <div class="project-section">
+            <h2>Personal Work</h2>
+            <p>During my nearly five years on SilverSat, I have learned skills like Creo, Soldering, PCB design, and electrical/mechanical assembly. My major contributions to the project include: </p>p
+           <ul>
+              <li>Modeled CubeSat assmbly in CREO</li>
+              <li>Designed, modeled, assembled, and tested an outdoor ground station</li>
+              <li>Led assembly and testing for Flight Model CubeSat</li>
+              <li>Presented work to NASA Administrators at Critical Design Review and Pre-Ship review</li>
+            </ul>
+        </div>
+
+        <div class="project-section">
+            <h2>Solution</h2>
+            <p>I developed an end-to-end machine learning pipeline that:</p>
+            <ul>
+                <li>Collects and preprocesses customer data from multiple sources</li>
+                <li>Engineers relevant features using domain knowledge</li>
+                <li>Trains ensemble models (Random Forest, XGBoost, Neural Networks)</li>
+                <li>Provides real-time predictions via REST API</li>
+                <li>Generates automated reports and visualizations</li>
+            </ul>
+        </div>
+
+        <div class="project-section">
+            <h2>Technical Implementation</h2>
+            <p><strong>Data Processing:</strong> Used Pandas and NumPy to clean and transform raw data, handling missing values and outliers.</p>
+            <p><strong>Feature Engineering:</strong> Created 50+ features including behavioral patterns, transaction history, and engagement metrics.</p>
+            <p><strong>Model Training:</strong> Implemented cross-validation and hyperparameter tuning using GridSearchCV. Final model achieved 94% accuracy with 0.91 F1-score.</p>
+            <p><strong>Deployment:</strong> Deployed using Docker containers on AWS EC2, with automated CI/CD pipeline.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Results & Impact</h2>
+            <ul>
+                <li>Achieved 94% prediction accuracy (15% improvement over baseline)</li>
+                <li>Reduced customer churn by 23% through early intervention</li>
+                <li>Processing time reduced from 2 hours to 5 minutes</li>
+                <li>Model now processes 10,000+ predictions daily</li>
+            </ul>
+        </div>
+
+        <div class="project-section">
+            <h2>Challenges & Learnings</h2>
+            <p>The biggest challenge was handling imbalanced data (only 8% churn rate). I addressed this using SMOTE oversampling and class weight adjustment. This experience taught me the importance of choosing the right evaluation metrics beyond just accuracy.</p>
+        </div>
+
+        <div class="project-links">
+            <a href="https://silversat.org/" class="btn-primary" target="_blank">Learn more or request a photo!</a>
+            <a href="https://www.nasa.gov/directorates/somd/launch-services-office/lsp/nasa-announces-12th-round-of-candidates-for-cubesat-space-missions/" class="btn-secondary" target="_blank">Live Demo</a>
+        </div>
+    </div>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Aidan Carle All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
