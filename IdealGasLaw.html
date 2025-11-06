@@ -1,1 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ideal Gas Law Research - Aidan Carle</title>
+    <link rel="stylesheet" href="syles.css">
+    <style>
+        .project-detail {
+            padding: 6rem 0 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .project-header {
+            margin-bottom: 3rem;
+        }
+        .project-header h1 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        /* Image Carousel Styles */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            margin: 3rem 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .carousel-slides {
+            position: relative;
+            width: 100%;
+            height: 500px;
+        }
+        
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        
+        .carousel-slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .carousel-caption {
+            padding: 1.5rem;
+            background: white;
+            text-align: center;
+        }
+        
+        .carousel-caption h3 {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .carousel-caption p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Carousel Navigation Buttons */
+        .carousel-btn {
+            position: absolute;
+            top: 180px;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .carousel-btn:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-btn-prev {
+            left: 1rem;
+        }
+        
+        .carousel-btn-next {
+            right: 1rem;
+        }
+        
+        /* Carousel Indicators */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+        
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-indicator.active {
+            background: white;
+            width: 30px;
+            border-radius: 6px;
+        }
+        
+        /* Project Sections */
+        .project-section {
+            margin-bottom: 3rem;
+        }
+        .project-section h2 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .project-section p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .project-section ul {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-left: 2rem;
+        }
+        .project-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        .back-button {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .back-button:hover {
+            text-decoration: underline;
+        }
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project-detail {
+                padding: 5rem 1rem 2rem;
+            }
+            .project-header h1 {
+                font-size: 2rem;
+            }
+            .carousel-slides {
+                height: 400px;
+            }
+            .carousel-slide img {
+                height: 300px;
+            }
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                top: 130px;
+            }
+            .carousel-indicators {
+                bottom: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Aidan Carle</div>
+            <div class="nav-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Project Detail Content -->
+    <div class="project-detail container">
+        <a href="index.html#projects" class="back-button">← Back to Projects</a>
+        
+        <div class="project-header">
+            <h1>Ideal Gas Law Research Project</h1>
+            <div class="project-meta">
+                <span>📅 January 2021</span>
+                <span>⏱️ 2 months</span>
+                <span>📍 Research and Experimentation, MBHS</span>
+            </div>
+            <div class="project-tags">
+                <span class="tag">Labratory Skills</span>
+                <span class="tag">Academic Writing</span>
+                <span class="tag">Leadership</span>
+            </div>
+        </div>
+
+        <!-- Image Carousel -->
+        <div class="carousel-container">
+            <div class="carousel-slides">
+                <!-- Slide 1 -->
+                <div class="carousel-slide active">
+                    <img src="images/SilverSat_Image1.jpg" alt="Dashboard Overview">
+                    <div class="carousel-caption">
+                        <h3>Flight Model</h3>
+                        <p>Assembly of Flight Model CubeSat</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <img src="images/SilverSat_Image2.jpg" alt="Data Visualization">
+                    <div class="carousel-caption">
+                        <h3>Pre-Ship Testing</h3>
+                        <p>Pre-Ship Fit Test with NanoRacks CubeSat Deployer</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <img src="images/SilverSat_Image3.jpg" alt="Feature Importance">
+                    <div class="carousel-caption">
+                        <h3>Solar Cell Testing</h3>
+                        <p>Assembly and Testing of Flight Model Solar Cells</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 4 -->
+                <div class="carousel-slide">
+                    <img src="images/SilverSat_Image4.jpeg" alt="Model Performance">
+                    <div class="carousel-caption">
+                        <h3>Pre-Ship Review</h3>
+                        <p>Ground station design presented to NASA administrators at SilverSat Pre-Ship review</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 5 -->
+                <div class="carousel-slide">
+                    <img src="images/SilverSat_Image5.jpeg" alt="API Integration">
+                    <div class="carousel-caption">
+                        <h3>FlatSat Testing</h3>
+                        <p>Integration and day in the life tests administered on FlatSat</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation Buttons -->
+            <button class="carousel-btn carousel-btn-prev" onclick="changeSlide(-1)">‹</button>
+            <button class="carousel-btn carousel-btn-next" onclick="changeSlide(1)">›</button>
+            
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <span class="carousel-indicator active" onclick="goToSlide(0)"></span>
+                <span class="carousel-indicator" onclick="goToSlide(1)"></span>
+                <span class="carousel-indicator" onclick="goToSlide(2)"></span>
+                <span class="carousel-indicator" onclick="goToSlide(3)"></span>
+                <span class="carousel-indicator" onclick="goToSlide(4)"></span>
+            </div>
+        </div>
+
+        <div class="project-section">
+            <h2>Overview</h2>
+            <p>During the second semester of my Freshman year, Research and Experimentation class, students spend several months designing and conducting a thorough chemistry experiment. Students then write a brief paper and presentation for the class research presentation day. Alongside two classmates, I conducted an experiment to measure the volume of various gases at STP compared to the predicted "ideal" volume. While relatively trivial, this project served as my introduction to academic writing and proper research. </p>
+        </div>
+
+
+        <div class="project-links">
+            <a <a href="ChemR&EReport_BlockD_Topic8.pdf" class="btn-primary" target="_blank">Final Paper</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Aidan Carle All rights reserved.</p>
+            <p>Built with HTML, CSS, and JavaScript</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        let autoPlayInterval;
+
+        function showSlide(n) {
+            // Wrap around
+            if (n >= slides.length) currentSlide = 0;
+            if (n < 0) currentSlide = slides.length - 1;
+            
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            // Show current slide
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide].classList.add('active');
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            showSlide(currentSlide);
+            resetAutoPlay();
+        }
+
+        function goToSlide(n) {
+            currentSlide = n;
+            showSlide(currentSlide);
+            resetAutoPlay();
+        }
+
+        // Auto-play carousel
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                currentSlide++;
+                showSlide(currentSlide);
+            }, 5000); // Change slide every 5 seconds
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            startAutoPlay();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const carouselContainer = document.querySelector('.carousel-container');
+
+        carouselContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        carouselContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) changeSlide(1);
+            if (touchEndX > touchStartX + 50) changeSlide(-1);
+        }
+
+        // Start auto-play when page loads
+        startAutoPlay();
+
+        // Pause auto-play when user hovers over carousel
+        carouselContainer.addEventListener('mouseenter', () => {
+            clearInterval(autoPlayInterval);
+        });
+
+        carouselContainer.addEventListener('mouseleave', () => {
+            startAutoPlay();
+        });
+    </script>
+</body>
+</html>
