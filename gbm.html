@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Geometric Brownian Motion Simulator</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 { font-size: 1.8em; margin-bottom: 0.2em; }
+  p.subtitle { color: #666; margin-top: 0; }
+  .plot-block { margin: 2.5em 0; }
+  .plot-block img {
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .plot-block h2 { font-size: 1.15em; margin-bottom: 0.3em; }
+  .params {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.85em;
+    color: #555;
+    background: #eee;
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 0.8em;
+  }
+  pre {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 1em;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.85em;
+  }
+  code { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+</style>
+</head>
+<body>
+
+<h1>Geometric Brownian Motion Simulator</h1>
+<p class="subtitle">Monte Carlo simulation of asset price paths using GBM, with terminal wealth distributions.</p>
+
+<p>
+  This model simulates possible future price paths for an asset assuming it follows
+  geometric Brownian motion &mdash; a common assumption in quantitative finance for stock
+  prices. Each simulation draws random monthly returns, compounds them, and tracks
+  a distribution of terminal (ending) values across many independent scenarios.
+</p>
+
+<div class="plot-block">
+  <h2>Baseline scenario</h2>
+  <span class="params">n_years=10, n_scenarios=50, mu=0.07, std=0.15, S_0=1000</span>
+  <img src="images/gbm_default.png" alt="GBM baseline scenario price paths and terminal wealth histogram">
+</div>
+
+<div class="plot-block">
+  <h2>Higher volatility</h2>
+  <span class="params">n_years=10, n_scenarios=100, mu=0.07, std=0.25, S_0=1000</span>
+  <img src="images/gbm_high_vol.png" alt="GBM high volatility scenario price paths and terminal wealth histogram">
+</div>
+
+<div class="plot-block">
+  <h2>Longer horizon</h2>
+  <span class="params">n_years=30, n_scenarios=200, mu=0.06, std=0.15, S_0=1000</span>
+  <img src="images/gbm_long_horizon.png" alt="GBM long horizon scenario price paths and terminal wealth histogram">
+</div>
+
+<h2>Model code</h2>
+<pre><code>def gbm(n_years=10, n_scenarios=50, mu=0.07, std=0.15, steps_per_year=12, S_0=1000):
+    dt = 1 / steps_per_year
+    n_steps = int(n_years * steps_per_year)
+    rets = np.random.normal(
+        loc=(1 + mu) ** dt,
+        scale=std * np.sqrt(dt),
+        size=(n_steps, n_scenarios)
+    )
+    rets = pd.concat(
+        [pd.DataFrame(np.ones((1, n_scenarios))), pd.DataFrame(rets)],
+        ignore_index=True
+    )
+    return S_0 * pd.DataFrame(rets).cumprod()
+</code></pre>
+
+<p style="margin-top:3em; color:#888; font-size:0.85em;">
+  Originally developed as a Jupyter notebook with interactive ipywidgets sliders for
+  n_years, n_scenarios, mu, std, and S_0. The plots above are static renders at a
+  few representative parameter sets, generated for display on GitHub Pages.
+</p>
+
+</body>
+</html>
