@@ -242,56 +242,78 @@
                 <span class="tag">Financial Modeling</span>
             </div>
         </div>
-  
-    <h1>Geometric Brownian Motion Simulator</h1>
-    <p class="subtitle">Monte Carlo simulation of asset price paths using GBM, with terminal wealth distributions.</p>
-    
-    <p>
-      This model simulates possible future price paths for an asset assuming it follows
-      geometric Brownian motion &mdash; a common assumption in quantitative finance for stock
-      prices. Each simulation draws random monthly returns, compounds them, and tracks
-      a distribution of terminal (ending) values across many independent scenarios.
-    </p>
-    
-    <div class="plot-block">
-      <h2>Baseline scenario</h2>
-      <span class="params">n_years=10, n_scenarios=50, mu=0.07, std=0.15, S_0=1000</span>
-      <img src="images/gbm_default.png" alt="GBM baseline scenario price paths and terminal wealth histogram">
+
+         <!-- Image Carousel -->
+        <div class="carousel-container">
+            <div class="carousel-slides">
+                <!-- Slide 1 -->
+                <div class="carousel-slide active">
+                    <img src="images/gbm_default.png" alt="Prototype">
+                    <div class="carousel-caption">
+                        <h3>Baseline Scenario</h3>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <img src="images/gbm_high_vol.png" alt="Prototype">
+                    <div class="carousel-caption">
+                        <h3>Higher Volatility</h3>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <img src="images/gbm_long_horizon.png" alt="Sketch">
+                    <div class="carousel-caption">
+                        <h3>Longer Timeframe</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation Buttons -->
+            <button class="carousel-btn carousel-btn-prev" onclick="changeSlide(-1)">‹</button>
+            <button class="carousel-btn carousel-btn-next" onclick="changeSlide(1)">›</button>
+            
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <span class="carousel-indicator active" onclick="goToSlide(0)"></span>
+                <span class="carousel-indicator" onclick="goToSlide(1)"></span>
+                <span class="carousel-indicator" onclick="goToSlide(2)"></span>
+            </div>
+        </div>
+
+        <div class="project-section">
+            <h2>Overview</h2>
+            <p>This coding project implements Geometric Brownian Motion to model random stock market variability. The original interactive Python code in VS Code implements
+            sliders and text inputs for the number of years, initial investment, expected return, standard deviation, and number of scenarios. This project comes completely
+            from following along with a tutorial by Daniel Boctor that I have linked below.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Example Code</h2>
+                <pre><code>def gbm(n_years=10, n_scenarios=50, mu=0.07, std=0.15, steps_per_year=12, S_0=1000):
+            dt = 1 / steps_per_year
+            n_steps = int(n_years * steps_per_year)
+            rets = np.random.normal(
+                loc=(1 + mu) ** dt,
+                scale=std * np.sqrt(dt),
+                size=(n_steps, n_scenarios)
+            )
+            rets = pd.concat(
+                [pd.DataFrame(np.ones((1, n_scenarios))), pd.DataFrame(rets)],
+                ignore_index=True
+            )
+            return S_0 * pd.DataFrame(rets).cumprod()
+        </code></pre>
+        </div>
+
+
+        <div class="project-links">
+            <a <a href="https://www.youtube.com/watch?v=cdwGyCLn770" class="btn-primary" target="_blank">Tutorial/Reference</a>
+        </div>
     </div>
-    
-    <div class="plot-block">
-      <h2>Higher volatility</h2>
-      <span class="params">n_years=10, n_scenarios=100, mu=0.07, std=0.25, S_0=1000</span>
-      <img src="images/gbm_high_vol.png" alt="GBM high volatility scenario price paths and terminal wealth histogram">
-    </div>
-    
-    <div class="plot-block">
-      <h2>Longer timeframe</h2>
-      <span class="params">n_years=30, n_scenarios=200, mu=0.06, std=0.15, S_0=1000</span>
-      <img src="images/gbm_long_horizon.png" alt="GBM long horizon scenario price paths and terminal wealth histogram">
-    </div>
-    
-    <h2>Project Code</h2>
-    <pre><code>def gbm(n_years=10, n_scenarios=50, mu=0.07, std=0.15, steps_per_year=12, S_0=1000):
-        dt = 1 / steps_per_year
-        n_steps = int(n_years * steps_per_year)
-        rets = np.random.normal(
-            loc=(1 + mu) ** dt,
-            scale=std * np.sqrt(dt),
-            size=(n_steps, n_scenarios)
-        )
-        rets = pd.concat(
-            [pd.DataFrame(np.ones((1, n_scenarios))), pd.DataFrame(rets)],
-            ignore_index=True
-        )
-        return S_0 * pd.DataFrame(rets).cumprod()
-    </code></pre>
-    
-    <p style="margin-top:3em; color:#888; font-size:0.85em;">
-      Originally developed as a Jupyter notebook with interactive ipywidgets sliders for
-      n_years, n_scenarios, mu, std, and S_0. The plots above are static renders at a
-      few representative parameter sets, generated for display on GitHub Pages.
-    </p>
+
 
 </body>
 </html>
