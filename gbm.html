@@ -36,11 +36,22 @@
             color: var(--dark);
             margin-bottom: 1rem;
         }
-        .project-section img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
+        .image-container {
+            width: 400px;      /* Set desired max width */
+            height: 300px;     /* Set desired max height */
+            border: 2px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          /* Image scaling without cropping */
+        .scaled-image {
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+            width: auto;
+            object-fit: contain; /* Ensures no cropping */
+          }
         .project-section p {
             color: var(--text-light);
             line-height: 1.8;
@@ -115,19 +126,20 @@
         </div> 
 
         </div>
-        <div class="project-section">
-            <h2>Default</h2>
-                 <img src="images/gbm_default.png" alt="Prototype">
-        </div>
-        <div class="project-section">
-            <h2>Higher Volatility</h2>
-                 <img src="images/gbm_high_vol.png" alt="Prototype">
-        </div>
-        <div class="project-section">
-            <h2>Longer Timeframe</h2>
-                 <img src="images/gbm_long_horizon.png" alt="Sketch">
-        </div>
 
+        <div class="image-container">
+              <h2>Default</h2>
+                 <img src="images/gbm_default.png" alt="scaled-image">
+        </div>
+        <div class="image-container">
+              <h2>Higher Volatility</h2>
+                 <img src="images/gbm_high_vol.png" alt="scaled-image">
+        </div>
+        <div class="image-container">
+              <h2>Longer Timeframe</h2>
+                 <img src="images/gbm_long_horizon.png" alt="scaled-image">
+        </div>
+    
         <div class="project-section">
             <h2>Overview</h2>
             <p>This coding project implements Geometric Brownian Motion to model random stock market variability. The original interactive Python code in VS Code implements
