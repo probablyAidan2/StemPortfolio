@@ -143,24 +143,24 @@ const animateCounters = () => {
 document.addEventListener('DOMContentLoaded', animateCounters);
 
 // Dynamic particle background effect (optional - can be removed if too heavy)
-const createParticles = () => {
-    const hero = document.querySelector('.hero');
-    const particleCount = 30;
+// const createParticles = () => {
+//     const hero = document.querySelector('.hero');
+//     const particleCount = 30;
 
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.style.position = 'absolute';
-        particle.style.width = Math.random() * 5 + 2 + 'px';
-        particle.style.height = particle.style.width;
-        particle.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
-        particle.style.borderRadius = '50%';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.top = Math.random() * 100 + '%';
-        particle.style.animation = `float ${Math.random() * 10 + 5}s ease-in-out infinite`;
-        particle.style.animationDelay = Math.random() * 5 + 's';
-        hero.appendChild(particle);
-    }
-};
+//     for (let i = 0; i < particleCount; i++) {
+//         const particle = document.createElement('div');
+//         particle.style.position = 'absolute';
+//         particle.style.width = Math.random() * 5 + 2 + 'px';
+//         particle.style.height = particle.style.width;
+//         particle.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+//         particle.style.borderRadius = '50%';
+//         particle.style.left = Math.random() * 100 + '%';
+//         particle.style.top = Math.random() * 100 + '%';
+//         particle.style.animation = `float ${Math.random() * 10 + 5}s ease-in-out infinite`;
+//         particle.style.animationDelay = Math.random() * 5 + 's';
+//         hero.appendChild(particle);
+//     }
+// };
 
 // Add floating animation
 const style = document.createElement('style');
