@@ -84,25 +84,25 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Add active state to navigation based on scroll position
-// window.addEventListener('scroll', () => {
-//     const sections = document.querySelectorAll('section[id]');
-//     const scrollPosition = window.scrollY + 200;
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section[id]');
+    const scrollPosition = window.scrollY + 200;
 
-//     sections.forEach(section => {
-//         const sectionTop = section.offsetTop;
-//         const sectionHeight = section.offsetHeight;
-//         const sectionId = section.getAttribute('id');
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
         
-//         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-//             document.querySelectorAll('.nav-links a').forEach(link => {
-//                 link.classList.remove('active');
-//                 if (link.getAttribute('href') === `#${sectionId}`) {
-//                     link.classList.add('active');
-//                 }
-//             });
-//         }
-//     });
-// });
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+});
 
 // Animate statistics counter
 const animateCounters = () => {
