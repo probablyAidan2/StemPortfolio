@@ -163,27 +163,27 @@ document.addEventListener('DOMContentLoaded', animateCounters);
 // };
 
 // Add floating animation
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0) translateX(0);
-        }
-        25% {
-            transform: translateY(-20px) translateX(10px);
-        }
-        50% {
-            transform: translateY(-10px) translateX(-10px);
-        }
-        75% {
-            transform: translateY(-30px) translateX(5px);
-        }
-    }
-`;
-document.head.appendChild(style);
+// const style = document.createElement('style');
+// style.textContent = `
+//     @keyframes float {
+//         0%, 100% {
+//             transform: translateY(0) translateX(0);
+//         }
+//         25% {
+//             transform: translateY(-20px) translateX(10px);
+//         }
+//         50% {
+//             transform: translateY(-10px) translateX(-10px);
+//         }
+//         75% {
+//             transform: translateY(-30px) translateX(5px);
+//         }
+//     }
+// `;
+// document.head.appendChild(style);
 
-// Initialize particles (optional)
-document.addEventListener('DOMContentLoaded', createParticles);
+// // Initialize particles (optional)
+// document.addEventListener('DOMContentLoaded', createParticles);
 
 // Add typing effect to hero subtitle (optional enhancement)
 const typeEffect = () => {
